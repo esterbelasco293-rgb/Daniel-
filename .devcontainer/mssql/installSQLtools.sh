@@ -1,13 +1,4 @@
 #!/bin/bash
-
-# Bloquear Bluetooth
-echo "Bloqueando Bluetooth..."
-systemctl disable bluetooth 2>/dev/null || true
-systemctl stop bluetooth 2>/dev/null || true
-rfkill block bluetooth 2>/dev/null || true
-modprobe -r btusb 2>/dev/null || true
-echo "Bluetooth bloqueado"
-
 echo "Installing mssql-tools"
 curl -sSL https://packages.microsoft.com/keys/microsoft.asc | (OUT=$(apt-key add - 2>&1) || echo $OUT)
 DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
